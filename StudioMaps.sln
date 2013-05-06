@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudioMaps.API", "StudioMaps.API\StudioMaps.API.csproj", "{25272972-2F70-48C6-A446-1C2182F482B1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudioMaps.API.Test", "StudioMaps.API.Test\StudioMaps.API.Test.csproj", "{19F8D634-D3A9-441D-80FF-4CBD8AD73149}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google.Maps", "..\gmaps-api-net\src\Google.Maps\Google.Maps.csproj", "{44C0377C-9B5C-4B25-9735-FECF5D165C1D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +17,14 @@ Global
 		{25272972-2F70-48C6-A446-1C2182F482B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25272972-2F70-48C6-A446-1C2182F482B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{25272972-2F70-48C6-A446-1C2182F482B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19F8D634-D3A9-441D-80FF-4CBD8AD73149}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19F8D634-D3A9-441D-80FF-4CBD8AD73149}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19F8D634-D3A9-441D-80FF-4CBD8AD73149}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19F8D634-D3A9-441D-80FF-4CBD8AD73149}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44C0377C-9B5C-4B25-9735-FECF5D165C1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44C0377C-9B5C-4B25-9735-FECF5D165C1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44C0377C-9B5C-4B25-9735-FECF5D165C1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44C0377C-9B5C-4B25-9735-FECF5D165C1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

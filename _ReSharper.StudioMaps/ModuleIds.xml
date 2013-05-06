@@ -1,3 +1,5 @@
 <Modules>
   <Module PersistentId="25272972-2F70-48C6-A446-1C2182F482B1" ModuleId="StudioMaps.API" />
+  <Module PersistentId="19F8D634-D3A9-441D-80FF-4CBD8AD73149" ModuleId="StudioMaps.API.Test" />
+  <Module PersistentId="44C0377C-9B5C-4B25-9735-FECF5D165C1D" ModuleId="Google.Maps" />
 </Modules>
