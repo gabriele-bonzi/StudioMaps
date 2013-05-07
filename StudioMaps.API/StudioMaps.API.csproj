@@ -155,8 +155,6 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Images\Gabry.jpg" />
-    <Content Include="Images\spencer.jpg" />
     <Content Include="Scripts\jquery.signalR-1.0.1.js" />
     <Content Include="Scripts\jquery.signalR-1.0.1.min.js" />
     <Content Include="Web.config" />
@@ -199,6 +197,9 @@
       <Project>{61e9fc82-47b0-43c3-8749-95d3a9967060}</Project>
       <Name>GoogleMapsApi</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\GabriSF.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
