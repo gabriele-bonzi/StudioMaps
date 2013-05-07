@@ -24,13 +24,13 @@ $(document).ready(function () {
 
             var trackPosition = $.connection.trackPositionHub;
 
-            trackPosition.client.setPositionMarker = function (clientID, latitudine, longitudine) {
+            trackPosition.client.setPositionMarker = function (clientInfo) {
                 //todo
                 var trovato = false;
                 $.each(mapModel.markers(), function (index, marker) {
-                    if (marker.id === clientID) {
-                        marker.latitudine(latitudine);
-                        marker.longitudine(longitudine);
+                    if (marker.id === clientInfo.ClientID) {
+                        marker.latitudine(clientInfo.Latitudine);
+                        marker.longitudine(clientInfo.Longitudine);
                         trovato = true;
                         return false;
                     }
@@ -38,7 +38,7 @@ $(document).ready(function () {
 
                 if (!trovato) {
                     require(["MarkerModel"], function (MarkerModel) {
-                        var markerModel = new MarkerModel(mapModel, latitudine, longitudine, clientID);
+                        var markerModel = new MarkerModel(mapModel, clientInfo);
                         mapModel.markers.push(markerModel);
                     });
                 }

@@ -37,12 +37,12 @@ namespace StudioMaps.API.Controllers
 
             return new Percorso(responseRoutes);
         }
-        public HttpResponseMessage PostPosizione(DtoClientPosition clientPosition)
+        public HttpResponseMessage PostPosizione(DtoClientPosition clientInfo)
         {
             try
             {
                 var context = GlobalHost.ConnectionManager.GetHubContext<TrackPositionHub>();
-                context.Clients.All.SetPositionMarker(clientPosition.ClientID, clientPosition.Latitudine, clientPosition.Longitudine);
+                context.Clients.All.SetPositionMarker(clientInfo);
                 return new HttpResponseMessage(HttpStatusCode.OK);
             }
             catch (Exception exception)
@@ -57,6 +57,8 @@ namespace StudioMaps.API.Controllers
         public string ClientID { get; set; }
         public decimal Latitudine { get; set; }
         public decimal Longitudine { get; set; }
+        public decimal DestinazioneLatitudine { get; set; }
+        public decimal DestinazioneLongitudine { get; set; }
     }
 }
 
