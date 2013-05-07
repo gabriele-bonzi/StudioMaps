@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="Css/Stile.css" rel="stylesheet" />
+
+    <script src="Scripts/jquery-1.9.1.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+
+    <script src="Scripts/knockout-2.2.1.js"></script>
+    <script src="Scripts/require.js" data-main="Scripts/main.js"></script>
+
+
+    <title>StudioMaps</title>
+</head>
+<body>
+    <div class="row">
+        <div class="container">
+            <div class="span12">
+                <input id="Partenza" type="text" data-bind="value: partenza"/>
+                <input id="Arrivo" type="text" data-bind="value: arrivo"/>
+                <button id="cerca" data-bind="click: cerca">Cerca</button>
+
+                <img id="mappa" data-bind="attr:{src : urlMap}" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
