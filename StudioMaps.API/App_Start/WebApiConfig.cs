@@ -12,7 +12,12 @@ namespace StudioMaps.API
             config.Routes.MapHttpRoute(
                 name: "MapApi",
                 routeTemplate: "api/Percorso/",
-                defaults: new { controller = "Percorso", action = "PostPercorso" });
+                defaults: new { controller = "Percorso", action = "PostPercorso" });  
+            
+            config.Routes.MapHttpRoute(
+                name: "MapApiPosizione",
+                routeTemplate: "api/Posizione/",
+                defaults: new { controller = "Percorso", action = "PostPosizione" });
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

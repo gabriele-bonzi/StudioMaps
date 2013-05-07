@@ -2,16 +2,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <link href="Content/bootstrap.css" rel="stylesheet" />
     <link href="Content/bootstrap-responsive.css" rel="stylesheet" />
     <link href="Css/Stile.css" rel="stylesheet" />
 
     <script src="Scripts/jquery-1.9.1.js"></script>
     <script src="Scripts/bootstrap.js"></script>
-
+    <script src="Scripts/jquery.signalR-1.0.1.js"></script>
+    <script src="../StudioMaps.API/signalr/hubs" type="text/javascript"></script>
     <script src="Scripts/knockout-2.2.1.js"></script>
     <script src="Scripts/require.js" data-main="Scripts/main.js"></script>
 
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <style>
+        html, body, #map-canvas
+        {
+            margin: 0;
+            padding: 0;
+            height: 400px;
+            width: 800px;
+        }
+    </style>
 
     <title>StudioMaps</title>
 </head>
@@ -19,14 +31,32 @@
     <div class="row">
         <div class="container">
             <div class="span12">
-                <input id="Partenza" type="text" data-bind="value: partenza"/>
-                <input id="Arrivo" type="text" data-bind="value: arrivo"/>
-                <button id="cerca" data-bind="click: cerca">Cerca</button>
+                <input id="Partenza" type="text" data-bind="value: partenza" />
+                <input id="Arrivo" type="text" data-bind="value: arrivo" />
+                <button id="btnCerca" data-bind="click: cerca">Cerca</button>
 
                 <img id="mappa" data-bind="attr:{src : urlMap}" />
             </div>
+            <div>
+                <input type="text" id="msg" />
+                <input type="button" id="broadcast" value="broadcast" />
+
+                <ul id="messages">
+                </ul>
+
+
+            </div>
+            <div id="map-canvas" class="span10">
+            </div>
+            <div data-bind="foreach: markers">
+                <ul>
+                    <li data-bind="text: 'Marker - Latitudine: ' + latitudine() + ' - Longitudine: ' + longitudine()"></li>
+                </ul>
+            </div>
         </div>
     </div>
+
 </body>
 </html>
+
 
