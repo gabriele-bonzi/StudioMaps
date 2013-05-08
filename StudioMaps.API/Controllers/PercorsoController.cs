@@ -54,7 +54,7 @@ namespace StudioMaps.API.Controllers
 
     public class DtoClientPosition
     {
-        public string ClientID { get; set; }
+        public string  ClientID { get; set; }
         public decimal Latitudine { get; set; }
         public decimal Longitudine { get; set; }
         public decimal DestinazioneLatitudine { get; set; }

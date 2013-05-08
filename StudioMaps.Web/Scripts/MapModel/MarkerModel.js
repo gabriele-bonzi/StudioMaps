@@ -21,20 +21,45 @@
                 icon: setIcon(clientInfo.ClientID)
             });
 
-        google.maps.event.addListener(googleMarker, 'click', function () {
-            alert('alert');
-        });
-
         var self = this;
         self.googleMarker = googleMarker;
-        self.id = clientInfo.ClienID;
+        self.id = clientInfo.ClientID;
         self.googleMap = modelMap.googleMap;
-        self.latitudine = ko.observable(clientInfo.Latitudine);
-        self.longitudine = ko.observable(clientInfo.Longitudine);
-        self.destinazione = { latitudine: clientInfo.DestinazioneLatitudine, longitudine: clientInfo.DestinazioneLongitudine };
+        self.origineLatitudine = ko.observable(clientInfo.Latitudine);
+        self.origineLongitudine = ko.observable(clientInfo.Longitudine);
+        self.destinazioneLatitudine = ko.observable(clientInfo.DestinazioneLatitudine);
+        self.destinazioneLongitudine = ko.observable(clientInfo.DestinazioneLongitudine);
+
+        google.maps.event.addListener(googleMarker, 'click', function () {
+            var directionsRequest = {
+                origin: new google.maps.LatLng(self.origineLatitudine(), self.origineLongitudine()),
+                destination: new google.maps.LatLng(self.destinazioneLatitudine(), self.destinazioneLongitudine()),
+                travelMode: google.maps.TravelMode.DRIVING
+            };
+            var directionsService = new google.maps.DirectionsService();
+            directionsService.route(directionsRequest, function (directionsResult, directionsStatus) {
+                if (directionsStatus === google.maps.DirectionsStatus.OK) {
+                    var directionsRender = new google.maps.DirectionsRenderer({ directions: directionsResult, map: modelMap.googleMap });
+                }
+            });
+        });
+        
+        google.maps.event.addListener(googleMarker, 'dblclick', function () {
+            var directionsRequest = {
+                origin: new google.maps.LatLng(self.origineLatitudine(), self.origineLongitudine()),
+                destination: new google.maps.LatLng(self.destinazioneLatitudine(), self.destinazioneLongitudine()),
+                travelMode: google.maps.TravelMode.DRIVING
+            };
+            var directionsService = new google.maps.DirectionsService();
+            directionsService.route(directionsRequest, function (directionsResult, directionsStatus) {
+                if (directionsStatus === google.maps.DirectionsStatus.OK) {
+                    var directionsRender = new google.maps.DirectionsRenderer({ directions: directionsResult, map: modelMap.googleMap });
+                }
+            });
+        });
 
         self.setPosizione = ko.computed(function () {
-            self.googleMarker.setPosition(new google.maps.LatLng(self.latitudine(), self.longitudine()));
+            self.googleMarker.setPosition(new google.maps.LatLng(self.origineLatitudine(), self.origineLongitudine()));
         });
     };
 

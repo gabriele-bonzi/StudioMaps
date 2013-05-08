@@ -29,8 +29,8 @@ $(document).ready(function () {
                 var trovato = false;
                 $.each(mapModel.markers(), function (index, marker) {
                     if (marker.id === clientInfo.ClientID) {
-                        marker.latitudine(clientInfo.Latitudine);
-                        marker.longitudine(clientInfo.Longitudine);
+                        marker.origineLatitudine(clientInfo.Latitudine);
+                        marker.origineLongitudine(clientInfo.Longitudine);
                         trovato = true;
                         return false;
                     }
