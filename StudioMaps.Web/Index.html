@@ -15,41 +15,33 @@
     <script src="Scripts/require.js" data-main="Scripts/main.js"></script>
 
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-    <style>
-        html, body, #map-canvas
-        {
-            margin: 0;
-            padding: 0;
-            height: 400px;
-            width: 800px;
-        }
-    </style>
-
     <title>StudioMaps</title>
 </head>
 <body>
     <div class="row">
         <div class="container">
-            <div class="span12">
-                <input id="Partenza" type="text" data-bind="value: partenza" />
-                <input id="Arrivo" type="text" data-bind="value: arrivo" />
-                <button id="btnCerca" data-bind="click: cerca">Cerca</button>
+            <!--<div class="span12">
+                    <input id="Partenza" type="text" data-bind="value: partenza" />
+                    <input id="Arrivo" type="text" data-bind="value: arrivo" />
+                    <button id="btnCerca" data-bind="click: cerca">Cerca</button>
 
-                <img id="mappa" data-bind="attr:{src : urlMap}" />
-            </div>
-            <div>
-                <input type="text" id="msg" />
-                <input type="button" id="broadcast" value="broadcast" />
+                    <img id="mappa" data-bind="attr:{src : urlMap}" />
+                </div>
+                <div>
+                    <input type="text" id="msg" />
+                    <input type="button" id="broadcast" value="broadcast" />
 
-                <ul id="messages">
-                </ul>
+                    <ul id="messages">
+                    </ul>
+                </div>-->
+            <div id="boxDati" class="pull-left" data-bind="foreach: markers">
+                <div id="boxDatiMarker">
+                    <span data-bind="text: 'Marker: ' + id"></span>
+                    <span data-bind="text: 'Distanza: ' + route.distanza"></span>
+                    <span data-bind="text: 'Durata: ' + route.durata"></span>
+                </div>
             </div>
             <div id="map-canvas" class="span10">
-            </div>
-            <div data-bind="foreach: markers">
-                <ul>
-                    <li data-bind="text: 'Marker - Latitudine: ' + origineLatitudine() + ' - Longitudine: ' + origineLongitudine()"></li>
-                </ul>
             </div>
         </div>
     </div>

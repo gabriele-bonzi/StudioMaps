@@ -29,18 +29,28 @@
         self.origineLongitudine = ko.observable(clientInfo.Longitudine);
         self.destinazioneLatitudine = ko.observable(clientInfo.DestinazioneLatitudine);
         self.destinazioneLongitudine = ko.observable(clientInfo.DestinazioneLongitudine);
-        self.routes = ko.observableArray([]);
+        self.route = ko.observable();
 
         google.maps.event.addListener(googleMarker, 'click', function () {
             require(["RouteModel"], function (RouteModel) {
-                var routeModel = new RouteModel(self);
-                self.routes.push(routeModel);
+                if (self.route() === undefined) {
+                    var routeModel = new RouteModel(self);
+                    self.route(routeModel);
+                }
+                else {
+                    self.route().delete();
+                    self.route(undefined);
+                }
             });
         });
 
-        self.setPosizione = ko.computed(function () {
+
+        self.setPosizioneOrigine = ko.computed(function () {
             self.googleMarker.setPosition(new google.maps.LatLng(self.origineLatitudine(), self.origineLongitudine()));
+            //self.googleMap.setCenter(new google.maps.LatLng(self.origineLatitudine(), self.origineLongitudine()));
         });
+
+
     };
 
     return viewModelConstructor;

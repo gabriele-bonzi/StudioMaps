@@ -32,6 +32,10 @@ $(document).ready(function () {
                     if (marker.id === clientInfo.ClientID) {
                         marker.origineLatitudine(clientInfo.Latitudine);
                         marker.origineLongitudine(clientInfo.Longitudine);
+
+                        marker.destinazioneLatitudine(clientInfo.DestinazioneLatitudine);
+                        marker.destinazioneLongitudine(clientInfo.DestinazioneLongitudine);
+
                         trovato = true;
                         return false;
                     }
@@ -41,6 +45,7 @@ $(document).ready(function () {
                     require(["MarkerModel"], function (MarkerModel) {
                         var markerModel = new MarkerModel(mapModel, clientInfo);
                         mapModel.markers.push(markerModel);
+                        //mapModel.googleMap.setCenter(new google.maps.LatLng(markerModel.origineLatitudine(), markerModel.origineLongitudine()));
                     });
                 }
             };
