@@ -29,32 +29,12 @@
         self.origineLongitudine = ko.observable(clientInfo.Longitudine);
         self.destinazioneLatitudine = ko.observable(clientInfo.DestinazioneLatitudine);
         self.destinazioneLongitudine = ko.observable(clientInfo.DestinazioneLongitudine);
+        self.routes = ko.observableArray([]);
 
         google.maps.event.addListener(googleMarker, 'click', function () {
-            var directionsRequest = {
-                origin: new google.maps.LatLng(self.origineLatitudine(), self.origineLongitudine()),
-                destination: new google.maps.LatLng(self.destinazioneLatitudine(), self.destinazioneLongitudine()),
-                travelMode: google.maps.TravelMode.DRIVING
-            };
-            var directionsService = new google.maps.DirectionsService();
-            directionsService.route(directionsRequest, function (directionsResult, directionsStatus) {
-                if (directionsStatus === google.maps.DirectionsStatus.OK) {
-                    var directionsRender = new google.maps.DirectionsRenderer({ directions: directionsResult, map: modelMap.googleMap });
-                }
-            });
-        });
-        
-        google.maps.event.addListener(googleMarker, 'dblclick', function () {
-            var directionsRequest = {
-                origin: new google.maps.LatLng(self.origineLatitudine(), self.origineLongitudine()),
-                destination: new google.maps.LatLng(self.destinazioneLatitudine(), self.destinazioneLongitudine()),
-                travelMode: google.maps.TravelMode.DRIVING
-            };
-            var directionsService = new google.maps.DirectionsService();
-            directionsService.route(directionsRequest, function (directionsResult, directionsStatus) {
-                if (directionsStatus === google.maps.DirectionsStatus.OK) {
-                    var directionsRender = new google.maps.DirectionsRenderer({ directions: directionsResult, map: modelMap.googleMap });
-                }
+            require(["RouteModel"], function (RouteModel) {
+                var routeModel = new RouteModel(self);
+                self.routes.push(routeModel);
             });
         });
 

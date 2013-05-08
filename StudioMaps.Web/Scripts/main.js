@@ -22,6 +22,7 @@ $(document).ready(function () {
             mapModel = new MapModel();
             ko.applyBindings(mapModel);
 
+            $.connection.hub.url = "http://apistudiomaps.azurewebsites.net/signalr";
             var trackPosition = $.connection.trackPositionHub;
 
             trackPosition.client.setPositionMarker = function (clientInfo) {
@@ -51,7 +52,6 @@ $(document).ready(function () {
                     trackPosition.server.send($('#msg').val());
                 });
             });
-
         }
 
         google.maps.event.addDomListener(window, 'load', initialize(mapModel));

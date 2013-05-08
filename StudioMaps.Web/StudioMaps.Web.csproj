@@ -82,6 +82,7 @@
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\MapModel\MapModel.js" />
     <Content Include="Scripts\MapModel\MarkerModel.js" />
+    <Content Include="Scripts\MapModel\RouteModel.js" />
     <Content Include="Scripts\r.js" />
     <Content Include="Scripts\require.js" />
     <Content Include="Web.config" />

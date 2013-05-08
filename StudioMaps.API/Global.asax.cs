@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Microsoft.AspNet.SignalR;
 
 namespace StudioMaps.API
 {
@@ -17,7 +18,11 @@ namespace StudioMaps.API
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            RouteTable.Routes.MapHubs();
+            var config = new HubConfiguration
+            {
+                EnableCrossDomain = true
+            };
+            RouteTable.Routes.MapHubs(config);
         }
     }
 }
