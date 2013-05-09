@@ -5,7 +5,7 @@
                 //return 'Content/images/Gabry.jpg'; 
                 return 'Content/images/Gabry.png';
             case 'nicola':
-                return 'Content/images/spencer.jpg';
+                return 'Content/images/spencer.png';
             default:
                 return null;
         }
