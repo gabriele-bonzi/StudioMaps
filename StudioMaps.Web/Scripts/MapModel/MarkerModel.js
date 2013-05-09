@@ -2,7 +2,8 @@
     var setIcon = function (clientID) {
         switch (clientID) {
             case 'gabri':
-                return 'Content/images/Gabry.jpg';
+                //return 'Content/images/Gabry.jpg'; 
+                return 'Content/images/Gabry.xcf';
             case 'nicola':
                 return 'Content/images/spencer.jpg';
             default:
@@ -48,6 +49,20 @@
         self.setPosizioneOrigine = ko.computed(function () {
             self.googleMarker.setPosition(new google.maps.LatLng(self.origineLatitudine(), self.origineLongitudine()));
             //self.googleMap.setCenter(new google.maps.LatLng(self.origineLatitudine(), self.origineLongitudine()));
+        });
+
+        self.distanza = ko.computed(function () {
+            if (self.route() !== undefined) {
+                return self.route().distanza();
+            }
+            return 0;
+        });
+
+        self.durata = ko.computed(function () {
+            if (self.route() !== undefined) {
+                return self.route().durata();
+            }
+            return 0;
         });
 
 

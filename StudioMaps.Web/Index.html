@@ -37,8 +37,8 @@
             <div id="boxDati" class="pull-left" data-bind="foreach: markers">
                 <div id="boxDatiMarker">
                     <span data-bind="text: 'Marker: ' + id"></span>
-                    <span data-bind="text: 'Distanza: ' + route.distanza"></span>
-                    <span data-bind="text: 'Durata: ' + route.durata"></span>
+                    <span data-bind="text: 'Distanza: ' + distanza()"></span>
+                    <span data-bind="text: 'Durata: ' + durata()"></span>
                 </div>
             </div>
             <div id="map-canvas" class="span10">

@@ -9,7 +9,7 @@
 {
     margin-top: 50px;
     margin-left: 50px;
-    width: 140px;
+    width: 160px;
     background-color: hsl(145, 62%, 68%) !important;
     background-repeat: repeat-x;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#cdf3dd", endColorstr="#7adfa4");
@@ -30,5 +30,6 @@
 
     #boxDatiMarker > span
     {
+        margin: 5px;
         margin: 5px;
     }
