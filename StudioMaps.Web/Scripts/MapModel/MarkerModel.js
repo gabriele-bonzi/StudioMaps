@@ -3,7 +3,8 @@
         switch (clientID) {
             case 'gabri':
                 //return 'Content/images/Gabry.jpg'; 
-                return 'Content/images/Gabry.png';
+                //return 'Content/images/Gabry.png';
+                return 'Content/images/terence.png';
             case 'nicola':
                 return 'Content/images/spencer.png';
             default:
