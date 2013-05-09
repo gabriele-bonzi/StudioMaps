@@ -23,10 +23,10 @@ $(document).ready(function () {
             ko.applyBindings(mapModel);
 
             $.connection.hub.url = "http://apistudiomaps.azurewebsites.net/signalr";
+            //$.connection.hub.url = "http://localhost/studiomaps.api/signalr";
             var trackPosition = $.connection.trackPositionHub;
 
             trackPosition.client.setPositionMarker = function (clientInfo) {
-                //todo
                 var trovato = false;
                 $.each(mapModel.markers(), function (index, marker) {
                     if (marker.id === clientInfo.ClientID) {

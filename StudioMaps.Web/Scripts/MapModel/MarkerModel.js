@@ -3,7 +3,7 @@
         switch (clientID) {
             case 'gabri':
                 //return 'Content/images/Gabry.jpg'; 
-                return 'Content/images/Gabry.xcf';
+                return 'Content/images/Gabry.png';
             case 'nicola':
                 return 'Content/images/spencer.jpg';
             default:
@@ -32,18 +32,21 @@
         self.destinazioneLongitudine = ko.observable(clientInfo.DestinazioneLongitudine);
         self.route = ko.observable();
 
-        google.maps.event.addListener(googleMarker, 'click', function () {
-            require(["RouteModel"], function (RouteModel) {
-                if (self.route() === undefined) {
-                    var routeModel = new RouteModel(self);
-                    self.route(routeModel);
-                }
-                else {
-                    self.route().delete();
-                    self.route(undefined);
-                }
-            });
+        require(["RouteModel"], function (RouteModel) {
+            var routeModel = new RouteModel(self);
+            self.route(routeModel);
         });
+        
+        google.maps.event.addListener(googleMarker, 'click', function () {
+            if(self.route().visible()) {
+                self.route().visible(false);
+            }
+            else {
+                self.route().visible(true);
+            }
+            
+        });
+
 
 
         self.setPosizioneOrigine = ko.computed(function () {
