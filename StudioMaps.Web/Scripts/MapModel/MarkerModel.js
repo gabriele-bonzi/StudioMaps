@@ -36,15 +36,15 @@
             var routeModel = new RouteModel(self);
             self.route(routeModel);
         });
-        
+
         google.maps.event.addListener(googleMarker, 'click', function () {
-            if(self.route().visible()) {
+            if (self.route().visible()) {
                 self.route().visible(false);
             }
             else {
                 self.route().visible(true);
             }
-            
+
         });
 
 
@@ -67,8 +67,6 @@
             }
             return 0;
         });
-
-
     };
 
     return viewModelConstructor;
