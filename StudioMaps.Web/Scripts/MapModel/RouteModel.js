@@ -2,7 +2,7 @@
     var viewModelConstructor = function (markerModel) {
 
         var directionsService = new google.maps.DirectionsService();
-        var directionsRenderer = new google.maps.DirectionsRenderer();
+        var directionsRenderer = new google.maps.DirectionsRenderer({ suppressMarkers: true });
 
         var self = this;
 
@@ -21,12 +21,13 @@
             var directionsRequest = {
                 origin: self.origin(),
                 destination: self.destination(),
-                travelMode: google.maps.TravelMode.DRIVING
+                travelMode: google.maps.TravelMode.DRIVING,
+
+                //avoidHighways: true,
+                //avoidTolls: true
             };
-            //directionsRenderer.setMap(null);
             directionsService.route(directionsRequest, function (directionsResult, directionsStatus) {
                 if (directionsStatus === google.maps.DirectionsStatus.OK) {
-                    //directionsRenderer.setMap(self.marker.googleMap);
                     directionsRenderer.setDirections(directionsResult);
 
                     self.distanza(directionsResult.routes[0].legs[0].distance.text);
@@ -38,17 +39,14 @@
             });
 
         });
-        self.setVisible = ko.computed(function() {
-            if(self.visible()) {
+        self.setVisible = ko.computed(function () {
+            if (self.visible()) {
                 directionsRenderer.setMap(markerModel.googleMap);
             }
             else {
                 directionsRenderer.setMap(null);
             }
         });
-        //self.delete = function () {
-        //    directionsRenderer.setMap(null);
-        //};
     };
 
     return viewModelConstructor;
