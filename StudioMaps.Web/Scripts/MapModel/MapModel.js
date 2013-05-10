@@ -1,9 +1,10 @@
 ﻿define("MapModel", function () {
     var viewModelConstructor = function () {
         var mapOptions = {
-            zoom: 8,
-            center: new google.maps.LatLng(45.397, 10.644),
-            mapTypeId: google.maps.MapTypeId.ROADMAP
+            zoom: 13,
+            center: new google.maps.LatLng(45.52418, 10.21033),
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            disableDefaultUI: true
         };
         var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
         

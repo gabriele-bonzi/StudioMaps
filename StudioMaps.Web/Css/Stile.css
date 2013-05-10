@@ -1,7 +1,7 @@
 ﻿#map-canvas
 {
     margin-top: 50px;
-    height: 400px;
+    height: 800px;
     width: 800px;
 }
 
@@ -66,4 +66,9 @@ div[id^=boxDatiMarker]
 {
     width: 1285px;
     margin-left: 300px;
+}
+
+.progress{
+    margin-top: 5px;
+    margin-bottom: 0px;
 }

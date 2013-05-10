@@ -23,16 +23,18 @@
                 icon: setIcon(clientInfo.ClientID),
                 title: clientInfo.ClientID
             });
-
+        var entrato = false;
         var self = this;
         self.googleMarker = googleMarker;
         self.id = clientInfo.ClientID;
+        self.icon = setIcon(clientInfo.ClientID);
         self.googleMap = modelMap.googleMap;
         self.origineLatitudine = ko.observable(clientInfo.Latitudine);
         self.origineLongitudine = ko.observable(clientInfo.Longitudine);
         self.destinazioneLatitudine = ko.observable(clientInfo.DestinazioneLatitudine);
         self.destinazioneLongitudine = ko.observable(clientInfo.DestinazioneLongitudine);
         self.descrizioneDestinazione = ko.observable('');
+
 
         self.setDescrizioneDestinazione = ko.computed(function () {
             var geocoder = new google.maps.Geocoder();
@@ -96,6 +98,35 @@
             }
             return 0;
         });
+
+        self.isArrivato = ko.computed(function () {
+            if ((self.origineLatitudine() === self.destinazioneLatitudine()) && (self.origineLongitudine() === self.destinazioneLongitudine())) {
+                var infowindow = new google.maps.InfoWindow({
+                    position: new google.maps.LatLng(self.origineLatitudine(), self.origineLongitudine()),
+                    content: googleMarker.getTitle() + ' è arrivato!!',
+                    map: self.googleMap
+                });
+                infowindow.open();
+            }
+        });
+
+        
+        //self.distanzaIniziale = ko.computed(function () {
+        //    //if (self.route() !== undefined && !entrato) {
+        //    if (!entrato) {
+        //        if (self.route().distanza() !== 0) {
+        //            entrato = true;
+        //            return parseFloat(self.route().distanza().replace('km', '')) * 1000;
+        //        }
+        //    }
+        //});
+        //self.progression = ko.computed(function () {
+        //    if (self.route() !== undefined && !entrato) {
+        //        if (self.route().distanza() !== 0) {
+        //            return ((self.distanzaIniziale() - self.route().distanza()) * 100) / self.distanzaIniziale();
+        //        }
+        //    }
+        //});
     };
 
     return viewModelConstructor;
