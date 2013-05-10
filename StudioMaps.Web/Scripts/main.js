@@ -22,6 +22,8 @@ $(document).ready(function () {
             mapModel = new MapModel();
             ko.applyBindings(mapModel);
 
+            $("#divError").hide();
+
             $.connection.hub.url = "http://apistudiomaps.azurewebsites.net/signalr";
             //$.connection.hub.url = "http://localhost/studiomaps.api/signalr";
             var trackPosition = $.connection.trackPositionHub;

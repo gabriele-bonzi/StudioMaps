@@ -21,27 +21,35 @@
     <div class="row">
         <div class="container">
             <div class="span12 hidden">
-                    <input id="Partenza" type="text" data-bind="value: partenza" />
-                    <input id="Arrivo" type="text" data-bind="value: arrivo" />
-                    <button id="btnCerca" data-bind="click: cerca">Cerca</button>
+                <input id="Partenza" type="text" data-bind="value: partenza" />
+                <input id="Arrivo" type="text" data-bind="value: arrivo" />
+                <button id="btnCerca" data-bind="click: cerca">Cerca</button>
 
-                    <img id="mappa" data-bind="attr:{src : urlMap}" />
-                </div>
-                <div class="hidden">
-                    <input type="text" id="msg" />
-                    <input type="button" id="broadcast" value="broadcast" />
+                <img id="mappa" data-bind="attr:{src : urlMap}" />
+            </div>
+            <div class="hidden">
+                <input type="text" id="msg" />
+                <input type="button" id="broadcast" value="broadcast" />
 
-                    <ul id="messages">
-                    </ul>
-                </div>
-            <div id="boxDati" class="pull-left" data-bind="foreach: markers">
-                <div id="boxDatiMarker">
+                <ul id="messages">
+                </ul>
+            </div>
+            <div id="boxDati" class="pull-right" data-bind="foreach: markers">
+                <div data-bind="attr:{id:'boxDatiMarker' + id}">
                     <span data-bind="text: 'Marker: ' + id"></span>
+                    <br />
+                    <span data-bind="text: 'Destinazione: ' + descrizioneDestinazione()"></span>
+                    <br />
                     <span data-bind="text: 'Distanza: ' + distanza()"></span>
+                    <br />
                     <span data-bind="text: 'Durata: ' + durata()"></span>
                 </div>
             </div>
             <div id="map-canvas" class="span10">
+            </div>
+            <div id="divError" class="span10 alert alert-danger fade in">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <span id="txtError"></span>
             </div>
         </div>
     </div>

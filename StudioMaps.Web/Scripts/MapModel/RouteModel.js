@@ -23,8 +23,8 @@
                 destination: self.destination(),
                 travelMode: google.maps.TravelMode.DRIVING,
 
-                //avoidHighways: true,
-                //avoidTolls: true
+                //avoidHighways: true, --evita strada principali
+                //avoidTolls: true --evita strade con pedaggio
             };
             directionsService.route(directionsRequest, function (directionsResult, directionsStatus) {
                 if (directionsStatus === google.maps.DirectionsStatus.OK) {
@@ -34,7 +34,16 @@
                     self.durata(directionsResult.routes[0].legs[0].duration.text);
                 }
                 else {
-                    alert('Errore: ' + directionsStatus);
+                    if ((self.marker.destinazioneLatitudine() && self.marker.destinazioneLongitudine()) === 0) {
+                        $("#txtError").text("Errore: " + self.marker.id + ' vuole andare in un posto sconosciuto.');
+                    }
+                    else {
+                        $("#txtError").text("Errore: " + self.marker.id + ' vuole andare in ' + self.marker.descrizioneDestinazione() + ' ma non è possibile tracciarne una rotta.');
+                    }
+
+                    $("#divError").show();
+
+                    //alert('Errore: ' + directionsStatus);
                 }
             });
 

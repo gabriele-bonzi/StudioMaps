@@ -20,7 +20,8 @@
                 clickable: true,
                 visible: true,
                 animation: google.maps.Animation.DROP,
-                icon: setIcon(clientInfo.ClientID)
+                icon: setIcon(clientInfo.ClientID),
+                title: clientInfo.ClientID
             });
 
         var self = this;
@@ -31,6 +32,21 @@
         self.origineLongitudine = ko.observable(clientInfo.Longitudine);
         self.destinazioneLatitudine = ko.observable(clientInfo.DestinazioneLatitudine);
         self.destinazioneLongitudine = ko.observable(clientInfo.DestinazioneLongitudine);
+        self.descrizioneDestinazione = ko.observable('');
+
+        self.setDescrizioneDestinazione = ko.computed(function () {
+            var geocoder = new google.maps.Geocoder();
+            var geocoderRequest = { location: new google.maps.LatLng(self.destinazioneLatitudine(), self.destinazioneLongitudine()) };
+            geocoder.geocode(geocoderRequest, function (geocoderResults, geocoderStatus) {
+                if (geocoderStatus === google.maps.GeocoderStatus.OK) {
+                    self.descrizioneDestinazione(geocoderResults[0].formatted_address);
+                }
+                else {
+                    $("#txtError").text('Errore: ' + geocoderResults[0].formatted_address + ' sconosciuta.');
+                    $("#divError").show();
+                }
+            });
+        });
         self.route = ko.observable();
 
         require(["RouteModel"], function (RouteModel) {
@@ -45,10 +61,22 @@
             else {
                 self.route().visible(true);
             }
-
         });
 
+        google.maps.event.addListener(googleMarker, 'mouseover', function () {
+            var infowindow = new google.maps.InfoWindow({
+                position: new google.maps.LatLng(self.origineLatitudine(), self.origineLongitudine()),
+                content: googleMarker.getTitle(),
+                map: self.googleMap
+            });
+            infowindow.open();
 
+            $("#boxDatiMarker" + self.id).addClass('selezionato');
+        });
+
+        google.maps.event.addListener(googleMarker, 'mouseout', function () {
+            $("#boxDatiMarker" + self.id).removeClass('selezionato');
+        });
 
         self.setPosizioneOrigine = ko.computed(function () {
             self.googleMarker.setPosition(new google.maps.LatLng(self.origineLatitudine(), self.origineLongitudine()));
